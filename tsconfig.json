@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ESNext", // Transpile to esnext"ESNext" syntax
+    "module": "ESNext", // Use ES2022 module syntax
+    "moduleResolution": "node", // Resolve modules like Node.js
+    "strict": true, // Enable strict type checking
+    "esModuleInterop": true, // Allow default imports from CommonJS modules
+    "forceConsistentCasingInFileNames": true, // Enforce consistent casing in file imports
+    "skipLibCheck": true, // Skip type checking of declaration files
+    "outDir": "./dist", // Specify output directory for compiled files
+    "rootDir": "./src", // Specify source directory for TypeScript files
+    "resolveJsonModule": true
+  },
+  "include": ["src/**/*"], // Include all files in the `src` directory
+  "exclude": ["node_modules", "dist"] // Exclude `node_modules` and `dist` directories
+}
