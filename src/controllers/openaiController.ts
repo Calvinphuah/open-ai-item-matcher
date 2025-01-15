@@ -39,7 +39,7 @@ const findClosestSupplierWithOpenAI = async (
     console.log("Raw OpenAI response (supplier):", rawResponse);
 
     const cleanedResponse = cleanResponse(rawResponse);
-    console.log("Cleaned response (supplier):", cleanedResponse);
+    // console.log("Cleaned response (supplier):", cleanedResponse);
 
     return cleanedResponse;
   } catch (error) {

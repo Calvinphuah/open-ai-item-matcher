@@ -2,7 +2,8 @@
   "suppliers": [
     { "id": 1, "name": "ABC Supplies" },
     { "id": 3, "name": "Global Supplier Ltd" },
-    { "id": 4, "name": "Alpha Distributors" }
+    { "id": 4, "name": "Alpha Distributors" },
+    { "id": 5, "name": "Amnosh Industries" }
   ],
   "items": [
     {
@@ -40,90 +41,61 @@
       "price": 50000,
       "rate": 2500
     },
-
     {
-      "id": 9,
-      "supplier": "XYZ Traders",
-      "description": "Crane - Mobile",
-      "price": 200000,
-      "rate": 10000
+      "id": 26,
+      "supplier": "Amnosh Industries",
+      "description": "Hitachi Transmission Fluid - Quart",
+      "price": 876,
+      "rate": 876
     },
     {
-      "id": 10,
-      "supplier": "XYZ Traders",
-      "description": "Concrete Mixer",
-      "price": 50000,
-      "rate": 2500
+      "id": 27,
+      "supplier": "Amnosh Industries",
+      "description": "4X189 Powerlink",
+      "price": 567.87,
+      "rate": 567.87
     },
     {
-      "id": 11,
-      "supplier": "Global Supplier Ltd",
-      "description": "Dump Truck - Heavy Duty",
-      "price": 100000,
-      "rate": 5000
+      "id": 28,
+      "supplier": "Amnosh Industries",
+      "description": "3-Planetary Gear System - 3-Stage",
+      "price": 456.82,
+      "rate": 456.82
     },
     {
-      "id": 12,
-      "supplier": "Global Supplier Ltd",
-      "description": "Excavator - Compact",
-      "price": 75000,
-      "rate": 4000
+      "id": 29,
+      "supplier": "Amnosh Industries",
+      "description": "D2 Heavy Duty Liquid",
+      "price": 345.06,
+      "rate": 345.06
     },
     {
-      "id": 13,
-      "supplier": "Global Supplier Ltd",
-      "description": "Bulldozer - Large",
-      "price": 150000,
-      "rate": 7000
+      "id": 30,
+      "supplier": "Amnosh Industries",
+      "description": "Hydraullic Press-25",
+      "price": 56.09,
+      "rate": 56.09
     },
     {
-      "id": 14,
-      "supplier": "Global Supplier Ltd",
-      "description": "Crane - Mobile",
-      "price": 200000,
-      "rate": 10000
+      "id": 31,
+      "supplier": "Amnosh Industries",
+      "description": "HMT Machine 2023",
+      "price": 354.04,
+      "rate": 354.04
     },
     {
-      "id": 15,
-      "supplier": "Global Supplier Ltd",
-      "description": "Concrete Mixer",
-      "price": 50000,
-      "rate": 2500
+      "id": 31,
+      "supplier": "Amnosh Industries",
+      "description": "Backhoe",
+      "price": 1112.04,
+      "rate": 1112.04
     },
     {
-      "id": 16,
-      "supplier": "Alpha Distributors",
-      "description": "Dump Truck - Heavy Duty",
-      "price": 100000,
-      "rate": 5000
-    },
-    {
-      "id": 17,
-      "supplier": "Alpha Distributors",
-      "description": "Excavator - Compact",
-      "price": 75000,
-      "rate": 4000
-    },
-    {
-      "id": 18,
-      "supplier": "Alpha Distributors",
-      "description": "Bulldozer - Large",
-      "price": 150000,
-      "rate": 7000
-    },
-    {
-      "id": 19,
-      "supplier": "Alpha Distributors",
-      "description": "Crane - Mobile",
-      "price": 200000,
-      "rate": 10000
-    },
-    {
-      "id": 20,
-      "supplier": "Alpha Distributors",
-      "description": "Concrete Mixer",
-      "price": 50000,
-      "rate": 2500
+      "id": 32,
+      "supplier": "Amnosh Industries",
+      "description": "Moxy",
+      "price": 35422.04,
+      "rate": 35422.04
     }
   ]
 }
