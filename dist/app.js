@@ -34,7 +34,6 @@ rl.question("What is the supplier name? \n", async (supplierInput) => {
         console.log(`Closest supplier: ${closestSupplier}`);
         // Step 2: Fetch items for the closest supplier
         const items = await fetchSupplierItems(closestSupplier);
-        console.log("items", items);
         console.log("Available items:", items.map((item) => item.description));
         // Step 3: Prompt the user for a description of the item
         rl.question("What is the item description e.g. Dump Truck/ Moxy? \n", async (itemInput) => {

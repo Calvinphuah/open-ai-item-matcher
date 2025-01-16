@@ -101,6 +101,12 @@ OPENAI_API_KEY=your_openai_api_key
 
 ## **Usage**
 
+### **Option 1: Interactive CLI (app.js)**
+
+The app.js file allows users to interactively match suppliers and item descriptions via a command-line interface (CLI). You can type in supplier names and item descriptions, and the application will use OpenAI's GPT to find the closest matches.
+
+### **To run the interactive CLI:**
+
 ### **1. Start the Application**
 
 Run the application using Node.js:
@@ -132,6 +138,70 @@ Closest item found: {
   "price": 100000,
   "rate": 5000
 }
+
+```
+
+### **Option 2: Automated Processing (index.js)**
+
+The index.js file automates the entire process by taking supplier and line item details extracted from Document AI (provided in a docaiData.json file) and matching them to supplier data and items stored on the JSON server.
+
+### **To run the automated processing:**
+
+### **1. Start the JSON server:**
+
+```bash
+json-server --watch db.json --port 3000
+```
+
+### **2. Run the script:**
+
+```bash
+node dist/index.js
+```
+
+### **What happens:**
+
+The script fetches supplier names and item data from the JSON server.
+It uses OpenAI to find the closest matching supplier for the supplier_name in the docaiData.json file.
+It matches each line_item/description from docaiData.json to items in the database using OpenAI's GPT.
+The script outputs the matched items and combines them with quantities from the Document AI data.
+
+```
+Available suppliers: [
+  'ABC Supplies',
+  'Global Supplier Ltd',
+  'Alpha Distributors',
+  'Amnosh Industries'
+]
+Raw OpenAI response (supplier): "Amnosh Industries"
+Closest supplier: Amnosh Industries
+Available items: [
+  'Hitachi Transmission Fluid - Quart',
+  '4X189 Powerlink',
+  '3-Planetary Gear System - 3-Stage',
+  'D2 Heavy Duty Liquid',
+  'Hydraullic Press-25',
+  'HMT Machine 2023',
+  'Backhoe',
+  'Moxy'
+]
+Line Item Description: Excavator - Compact
+Matched Item: {
+  id: '31',
+  supplier: 'Amnosh Industries',
+  description: 'Backhoe',
+  price: 1112.04,
+  rate: 1112.04,
+}
+Combined Item: {
+  id: '31',
+  supplier: 'Amnosh Industries',
+  description: 'Backhoe',
+  price: 1112.04,
+  rate: 1112.04,
+  quantity: '1',
+}
+
 
 ```
 

@@ -78,31 +78,31 @@ const processDocumentAIData = async () => {
     );
 
     // Step 4: Match each line item from Document AI data and combine details
-    const matchedItems = documentAIData.line_items
-      .map(async (lineItem: LineItem) => {
-        const description = lineItem["line_item/description"];
-        console.log("Line Item Description:", description);
+    const matchedItems: CombinedItem[] = [];
 
-        const matchingItem = await matchClosestItem(description, supplierItems);
+    for (const lineItem of documentAIData.line_items) {
+      const description = lineItem["line_item/description"];
+      console.log("Line Item Description:", description);
+
+      const matchingItem = await matchClosestItem(description, supplierItems);
+
+      if (matchingItem) {
+        const combinedItem: CombinedItem = {
+          ...matchingItem,
+          quantity: lineItem["line_item/quantity"],
+        };
+
+        // Log the final matched and combined items together
         console.log("Matched Item:", matchingItem);
+        console.log("Combined Item:", combinedItem);
 
-        let combinedItem: CombinedItem | null = null;
-        if (matchingItem) {
-          combinedItem = {
-            ...matchingItem,
-            quantity: lineItem["line_item/quantity"],
-          };
-          // Log the final matched items
-          console.log("Matched Item:", matchingItem);
-          console.log("Combined Item:", combinedItem);
+        matchedItems.push(combinedItem);
+      } else {
+        console.warn(`No match found for line item: ${description}`);
+      }
+    }
 
-          return combinedItem;
-        } else {
-          console.warn(`No match found for line item: ${description}`);
-          return null;
-        }
-      })
-      .filter(Boolean); // Remove nulls for unmatched items
+    console.log("Final Matched Items:", matchedItems);
 
     return matchedItems;
   } catch (error) {
