@@ -25,14 +25,19 @@ const findClosestSupplierWithOpenAI = async (
     const completion = await openai.chat.completions.create({
       model: "gpt-4",
       messages: [
-        { role: "system", content: "You are a helpful assistant." },
+        {
+          role: "system",
+          content:
+            "You are a helpful assistant. Always return the closest matching supplier name from the list provided, or 'None' if no match exists. Do not return extra text.",
+        },
         { role: "user", content: prompt },
       ],
       max_tokens: 50,
     });
 
     const rawResponse = completion.choices[0].message?.content?.trim();
-    if (!rawResponse) {
+    if (!rawResponse || rawResponse === "None") {
+      console.log("Raw OpenAI response (item):", JSON.stringify(rawResponse));
       throw new Error("No response from OpenAI.");
     }
 
@@ -55,13 +60,13 @@ const matchClosestItem = async (
   input: string,
   items: Item[]
 ): Promise<Item | null> => {
+  const itemDescriptions = items.map((item) => item.description);
   const prompt = `
     You are an assistant knowledgeable in Australian Construction Naming Standards.
-    I have a list of item descriptions: ${JSON.stringify(
-      items.map((item) => item.description)
-    )}.
+    I have a list of item descriptions: ${JSON.stringify(itemDescriptions)}.
     Based on the input "${input}", find the closest matching item description. Be aware that some items may have alternative names, for example, dump truck is Moxy in Australia.
-    Return only the closest matching name, without any explanation.
+    Only return a description that exists in the provided list. If no close match can be identified, return "None".
+    Do not provide any explanation, context, or additional text.
   `;
 
   try {
@@ -71,7 +76,7 @@ const matchClosestItem = async (
         {
           role: "system",
           content:
-            "You are a helpful assistant with expertise in Australian construction terminology.",
+            "You are a helpful assistant with expertise in Australian construction terminology. Always provide the closest matching description from the provided list and never include extra text.",
         },
         { role: "user", content: prompt },
       ],
@@ -79,7 +84,8 @@ const matchClosestItem = async (
     });
 
     const rawResponse = completion.choices[0].message?.content?.trim();
-    if (!rawResponse) {
+    if (!rawResponse || rawResponse === "None") {
+      console.log("Raw OpenAI response (item):", JSON.stringify(rawResponse));
       throw new Error("No response received from OpenAI.");
     }
 

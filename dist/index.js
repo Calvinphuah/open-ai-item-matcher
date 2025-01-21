@@ -29,7 +29,9 @@ const processDocumentAIData = async () => {
         const supplierNames = await fetchSuppliers();
         console.log("Available suppliers:", supplierNames);
         // Step 2: Find the closest supplier based on the DOC AI data
-        const closestSupplier = await findClosestSupplierWithOpenAI(documentAIData.supplier_name, supplierNames);
+        const extractedSupplierName = documentAIData.supplier_name;
+        console.log("Extracted DOC AI Supplier Name:", extractedSupplierName);
+        const closestSupplier = await findClosestSupplierWithOpenAI(extractedSupplierName, supplierNames);
         console.log(`Closest supplier: ${closestSupplier}`);
         // Step 3: Fetch items for the closest supplier
         const supplierItems = await fetchSupplierItems(closestSupplier);

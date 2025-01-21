@@ -64,8 +64,10 @@ const processDocumentAIData = async () => {
     console.log("Available suppliers:", supplierNames);
 
     // Step 2: Find the closest supplier based on the DOC AI data
+    const extractedSupplierName = documentAIData.supplier_name;
+    console.log("Extracted DOC AI Supplier Name:", extractedSupplierName);
     const closestSupplier = await findClosestSupplierWithOpenAI(
-      documentAIData.supplier_name,
+      extractedSupplierName,
       supplierNames
     );
     console.log(`Closest supplier: ${closestSupplier}`);
